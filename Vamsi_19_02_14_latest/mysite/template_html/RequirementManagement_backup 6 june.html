@@ -1,0 +1,1107 @@
+<!DOCTYPE html>
+
+<!-- THIRD PAGE (search)-->
+
+<html>
+<head>
+ <meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
+  
+  <script type="text/javascript"
+    src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
+  <script type="text/javascript" src="../src/jquery.shorten.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="jquery.shorten.js"></script>
+  
+  
+<style type="text/css">
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+
+#Tab{
+text-decoration: none;
+border-color:black;
+color: white;
+background-color:#2E0F94 ;
+border-style:solid dashed none dashed; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+
+
+
+
+
+#ActiveTab{
+font-size:120%;
+text-decoration: none;
+border-color:#FFFFFF;
+color: black;
+background-color:yellow;
+border-style:ridge; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+table{
+border-color:yellow;
+color: black;
+background-color:#FFFFFF;
+border-style:ridge; 
+border-width:1px;
+width:100%;
+}
+input[type="text"]{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;width:100%;
+}
+select{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;
+width:100%;
+}        
+.Index{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:solid;
+}
+.tableDivisionTask{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+width:20%;
+}
+.tableDivision{
+color: black;
+background-color:#FF00FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+}
+tr,td {
+  padding: 0.0%;
+  width:10%;
+  
+}
+
+
+
+
+#outer {
+    overflow:hidden;
+    width:100%;
+    height:80px;
+}
+#inner {
+    overflow:scroll; 
+    width:106%;
+    height:96px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>My Task</title>
+<style type="text/css">
+    .title { color: blue; text-decoration: bold; text-size: 1em; }
+    .author { color: gray; }
+	.hidden{visibility:hidden}
+</style>
+
+
+<style>
+.td1 {
+  padding: 0.0%;
+  width:10%;
+  
+}
+
+</style>
+
+<style>
+.td2{
+  padding: 0.0%;
+  width:5%;
+   text-align: center;
+  
+}
+
+</style>
+<style>
+.right
+{
+float:right;
+width:270px;
+background-color:#b0e0e6;
+}
+</style>
+
+<style>
+.centerText{
+   text-align: center;
+}
+</style>
+
+
+<style>
+.left
+{
+float:left;
+width:200px;
+
+}
+</style>
+
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+ 
+ 
+ 
+<script>
+$(document).ready(function() {
+	
+	$(".comment").shorten();
+	});
+</script>	 
+
+
+
+
+
+<!-- <style type="text/css">
+body{
+font-family: Calibri, Arial;
+margin: 0px;
+padding: 0px;
+}
+
+.morecontent span {
+display: none;
+}
+</style> -->
+
+ 
+  <script>
+  $(document).ready(function() {
+    $("#datepicker1").datepicker();
+  });
+  </script>
+  
+  
+
+
+  <!-- <script>
+ function display_report1()
+  {
+  //alert("Display_report_Ajax");
+	 var input_string = $("#status").val();
+	 var date1=$("#datepicker").val();
+	var date2= $("#datepicker1").val();
+	var Source =$("#Source").val();
+	alert(input_string+date1+date2+Source);
+	// var date1=$("#status").val();
+	 
+	
+            var newTable = document.createElement('tbody');   // New
+            var newRow = document.createElement("tr");
+            var nameCell = document.createElement("td");
+            var jobCell = document.createElement("td");
+            nameCell.appendChild(document.createTextNode(date));
+            jobCell.appendChild(document.createTextNode(count));
+			alert(count);
+            newRow.appendChild(nameCell);
+            newRow.appendChild(jobCell);
+            newTable.appendChild(newRow);   // New
+            tableElement.appendChild(newTable);   // New
+            alert("code executed!");
+	
+        
+                           } },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+  }
+  
+  </script>
+   -->
+  
+  
+  
+      <script>
+function updateOptions( ) {
+
+   var input_string = $("#Client").val();
+   $.ajax({
+                        url : "/output2/",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : input_string,
+
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) 
+							{
+						console.log(json.server_response);	
+		$('#ReqId').html('');					
+var obj_array =  json.server_response;
+		var flag=0;				
+						$.each(obj_array, function (index, value) {
+						
+			if(flag==0)
+{			
+		$('#ReqId').append('<option>'+''+'</option>');
+			flag=1;
+		}
+      $('#ReqId').append('<option>'+value+'</option>'); // Your id logic goes here
+        console.log(value);
+    });
+	
+        
+                            },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+}
+
+</script>
+ 
+</head>
+
+
+
+
+<body>
+
+<div class="left">
+
+<a href='/resunsub/' >   Resume Submit    </a>&nbsp; </div>
+
+<div class="left">
+
+<a href='/requiresub/' >    Requirement Submit  </a> </div>
+
+<div class="left">
+
+<a href='/RequirementManagement/'  style= "COLOR: #eb7501;"> Requirement Management </a> </div>
+
+<div class="left">
+
+<!--<a href='/openstateresume/' > Open State Resumes </a> --></div>
+
+<a href='/logout/'>       Sign Out    </a>
+
+
+<!-- style="BACKGROUND-COLOR: #ffff80; -->
+
+
+<div class="left">
+<a href='/query/'  >     Search    </a> </div>
+
+
+<form id="login1" method="POST" action="/Export_to/">
+
+<DIV class="right">
+<td>Source Name:</td>
+<td><div >
+    
+    <select class="form-control element select medium" id="Source" name="Source" title="Choose Source Name" onChange="source_name();">
+   
+
+<!-- {% for c in getSource %}
+    <option value="{{ c }}"{% ifequal c.val Source %} selected="selected"{% endifequal %}>{{ c }}</option>
+    {% endfor %} -->
+
+	<option selected="selected" value=""  ></option>
+    
+	{% for result in getSource %}
+
+
+<option   value={{result}} >{{result}}</option>
+
+ {% endfor %}
+</select>
+
+
+
+  </div>  
+   <td>  <label for="description"  for="Product">REPORTS :</label> 
+ 
+ </td>
+
+<td><div >
+    <!-- <label for="description"  for="Product">Product Name:</label>-->
+   <select id="status" name="status" title="Choose type of Report" disabled="true" onChange="Reports_methd();">
+    <option selected="selected" value=""  ></option>
+	<option  value="WSR"  >WSR</option>
+	<option   value="DSR"  >DSR</option>
+    
+	<!-- {% for result in status %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}-->
+</select>
+  </div>
+</td>
+</td>
+
+
+<td>Start Date:</td>
+<td><input id="datepicker" disabled="true"  name="datepicker" value="{{Date1}}"  onClick="date_change();">  </td></br>
+
+
+<td>End Date: </td>
+<td><input id="datepicker1" disabled="true"  name="datepicker1" value="{{Date2}}" onClick="date_change();">  </td>
+
+ 
+ 
+   <!-- <select  id="status" name="status" title="Enter Product Name" onChange="disableOptions();"> 
+
+     <option selected="selected" value=""  ></option>
+    
+	{% for result in status %}
+
+
+<option   value={{result}} >{{result}}</option>
+
+ {% endfor %}
+
+ </select> </div> </td>-->
+	<input type="submit" id="export"  value = "EXPORT" name="export" disabled="true" class="btn btn-default loginprim" > 
+	
+	
+	<!--<form id="login1" method="POST" action="/display_report/">-->
+	
+	<input type="button" id="show"  value = "Show Report" name="show" onClick="display_report();"	></br></DIV></br></DIV>
+	
+
+</form>
+
+
+
+<!-- Hyperlinks -->
+
+
+
+
+<br><br><br>
+
+<!--" searchResult1" method in Views is used to search the data as per -->
+
+<form enctype="multipart/form-data"  id="login" method="POST" action="/searchResult1/" >
+
+
+<table  style="border-color:#8000FF;border-width:1px;" cellSpacing="2" cellPadding="2">
+<tr></br>
+<td><i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; font-weight:bold; COLOR: #9900ff;">Fill Any of the fields.</i> </td>
+ </br>
+</tr>
+
+<tr>
+<td >Client :</td>
+
+<!-- <td><input type="text" id = "Client" name="Client"  >  </td> -->
+<td align="middle">
+    
+    <select class="form-control element select medium" align="middle" id="Client" name="Client" title="Choose Client Name" onChange="updateOptions();">
+    <option selected="selected" value=""  ></option>
+    
+
+
+<!-- {% for c in getClient %}
+    <option value="{{ c }}"{% ifequal c.val Client %} selected="selected"{% endifequal %}>{{ c }}</option>
+    {% endfor %} -->
+
+
+	 {% for result in getClient %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %} 
+</select>
+  
+</td>
+
+
+</tr>
+
+<tr>
+<td>Requirement ID :</td>
+  
+<td><div class="form-group">
+    
+   <select class="form-control element select medium" id="ReqId" name="ReqId" title="Choose Requirement ID" onChange="disableOptions();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in requirementids %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div>
+</td>
+
+  
+<!-- <td><input type="text" id ="RequirementID"  name="RequirementID"  >  </td>-->
+</tr>
+
+
+<!-- <td>Skills</td>
+<td><input type="text" id ="skills"name="skills" title ="c,c++ = Both values c/c++ = Any value" >  </td> -->
+
+<tr>
+
+ <td>   <label for="description"  for="Product">Status :</label> </td>
+ 
+ <td>   <select  id="status" name="status" title="Choose Status" onChange="disableOptions();"> 
+
+        <option selected ="selected" ></option>
+   
+        {% for result in list %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}  </select>  </td>
+</tr>
+
+<tr>
+</tr>
+
+<tr>
+</tr>
+
+<td></td>
+<td>
+
+
+<input type="submit" value = "Search" class="btn btn-default loginprim" ></td>
+</form>
+
+
+
+<td colspan="5" ><font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT';">{{msgRed}}</i>
+</font>
+
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT'; COLOR: #0000a0;">{{msgBlue}}</i>
+</font>
+
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; COLOR: #80ff00;">{{msgGreen}}</i>
+</font>
+
+</td>
+</tr>
+</form>
+</table>
+
+<!-- <form enctype="multipart/form-data"  id="login" method="post" action="/searchResume/" >
+<input type="submit" value = "Resumes" class="btn btn-default loginprim" >
+</form> -->
+
+<form enctype="multipart/form-data"  id="login" method="post" action="/searchRequirements1/" >
+<input type="submit" value = "All Requirements" class="btn btn-default loginprim" >
+</form>
+
+
+<table style="border-style:solid;border-color:CadetBlue;border-width:1pt;" border = 1px>
+<tr>
+<th>Client</th>
+<th>Existing Status of requirement</th>
+<th>New Status</th>
+<th>Primary Skills</th>
+<th>Date of Opening</th>
+<th>Minimum Exp</th>
+<th>No Of Positions</th>
+<th>Open positions</th>
+<th>Location</th>
+<th>BD POC</th>
+<th>Requirement ID</th>
+
+<th>Description</th>
+
+<th>Note</th>
+
+
+<form enctype="multipart/form-data"  id="login" method="post" action="/saveEditRequirement1/" >
+<tr>
+<td><input type="text" name="client" value="{{client}}">  </td>
+<td><input type="text" id="Status" name="Status" value="{{Status}}">  </td>
+
+<td> <div class="form-group">
+   
+   <select class="form-control element select medium" id="status2" name="status2" title="Choose Status" onChange="status_Change();">
+    <option selected="selected" value={{result}}  ></option>
+    
+	{% for result in status2 %}
+
+
+<option   value={{result}} {% if status2 == result %}selected{% endif %}>{{result}}</option>
+ {% endfor %}
+</select>
+  </div> <!--<input type="text" name="Status" value="{{Status}}">-->  </td>
+<td><input type="text" name='PrimarySkills' value="{{Primary_Skill}}">  </td>
+<td><input type="text" name="DateofOpening" value="{{Opendate}}">  </td>
+<td><input type="text" name="MinimumExp" value="{{Minimumexp}}">  </td>
+<td><input type="text" name="NoOfPositions" value="{{noOfPosition}}">  </td>
+<td><input type="text" name="Openpositions" value="{{openPosition}}">  </td>
+<td><input type="text" name="location" value="{{location}}">  </td>
+<td><input type="text" name="BDPOC" value="{{BDPOC}}">  </td>
+<td>{{ReqId}}<input name = "RequirementID" value = "{{ReqId}}" id="IdField"  type="hidden" ></td>
+
+
+
+<div class="more"> <td><input type="text" name="Description" value="{{Description}}">  </td></div>
+
+
+<td><input type="text" name="note" value="{{note}}">  </td>
+
+<!-- for accessing old status -->
+<td><input id="oldstatus1" type="hidden"  name="oldstatus1" value={{Status}}></td>
+
+<!--<td><input id="oldstatus" type="hidden"  name="oldstatus" value={{Status}}></td>-->
+</tr>
+<tr>
+<td>
+
+
+<input type="submit" value = "submit" class="btn btn-default loginprim" />
+</td>
+</form>
+</tr>
+</tr>
+
+
+
+{% for result in listSearchResult reversed%}
+<tr>
+ 
+<form id="listOfSearch{{result.1}}" method="post" action="/editMyRequirement1/">
+<tr>
+<td>{{result.2}}</td>
+<td>{{result.9}}</td>
+<td></td>
+<td>{{result.3}}</td>
+<td>{{result.0}}</td>
+<td>{{result.6}}</td>
+<td>{{result.4}}</td>
+
+
+<td>{{result.5}}</td>
+<td>{{result.7}}</td>
+<td>{{result.8}}</td>
+
+
+
+<td class="tableDivisionTask">	
+<a href="#" onclick="document.forms['listOfSearch{{result.1}}'].submit();">{{result.1}}<input name = "uniqID" value = "{{result.1}}" id="IdField"  type="hidden" ></a></td>
+
+<div class="comment">
+<td class="comment">{{result.10}}</td></div>
+<!-- <td>hellooooooooooooooooooooooooooooooooooooooooooooooooooooooooooo
+fekfoekfoekoekoeeoekoooooooooowokeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+klwelwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww
+kfneeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+welokjjjjjjjjjjjjjjjjjjjjjjjjjjjjooooooooooooooooooo</td>-->
+<td class="comment">{{result.11}}</td>
+
+
+<!-- to take old value of status-->
+<!--<td>{{result.9}}</td>-->
+</tr>
+	  
+
+</form>
+{% endfor %}
+
+</table>
+<ul id="hiddenCols"></ul>
+<br>{{msg}}
+
+
+<table id="table1"> </table>
+
+
+
+
+<!----------- newly added for REPORTS---------------------->
+<!--------   ------------------------------------------------------------------------------>
+<!--------   ------------------------------------------------------------------------------>
+
+
+
+<script>
+function source_name(){
+//alert('hi');
+//document.getElementIdBy('status').disabled="false";
+document.getElementById("status").disabled=false;
+
+}
+
+</script>
+
+
+
+<script>
+function status_Change()
+{
+   var e = document.getElementById("status2");
+   var input_string = e.options[e.selectedIndex].text;
+ //  alert(input_string);
+   document.getElementById("Status").value =input_string;
+}
+</script>
+
+
+<script>
+function Reports_methd()
+{
+ var report=document.getElementById("status").value ;
+ //alert(report);
+ 
+ if (report =='WSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+  document.getElementById("datepicker1").disabled=false;
+  //document.getElementById("export").disabled=false;
+ }
+ else if(report=='DSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+ document.getElementById("datepicker1").disabled=true;
+ //document.getElementById("export").disabled=false;
+ }
+}
+
+</script>
+
+
+
+<script>
+function date_change()
+
+{
+ var report=document.getElementById("status").value ;
+ //alert(report);
+ 
+ if (report =='DSR')
+ {
+   var date=document.getElementById("datepicker").value ;
+  // if (date!='')
+   //{
+   
+   document.getElementById("export").disabled=false;
+ //  }
+   
+   // alert('hi');
+    //document.getElementIdBy('status').disabled="false";
+	 document.getElementById("datepicker1").disabled=true;
+	 
+     
+	 
+}
+
+if (report =='WSR')
+{
+    var date=document.getElementById("datepicker").value ;
+	var date1=document.getElementById("datepicker1").value ;
+   // alert('hi');
+    //document.getElementIdBy('status').disabled="false";
+	//if (date!="" and date1!="")
+	//{
+	
+     document.getElementById("export").disabled=false;
+	// }
+}
+}
+
+</script>
+
+
+
+<script>
+function hideCol(columnClass)
+
+{
+$('table .'+columnClass).each(function(index) {
+$(this).hide();
+});
+
+$('ul#hiddenCols').append('<li id="'+columnClass
++'"><a href="javascript:;" onclick="showCol(\''
++columnClass+'\');">Show '+columnClass+'</a></li>');
+}
+
+
+</script>
+
+
+
+<script>
+
+function showCol(columnClass){
+$('table .'+columnClass).each(function(index) {
+$(this).show();
+});
+
+$('li#'+columnClass).remove();
+}
+</script>
+
+
+</body>
+
+
+<script>
+function display_report( )
+
+ {
+ //alert("hi");
+   var input_string = $("#datepicker").val();
+   var input_string1 = $("#datepicker1").val();
+    var input_string2 = $("#Source").val();
+	 var input_string3 = $("#status").val();
+   $.ajax({
+                        url : "/display_report/",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : input_string,
+							client_response1 : input_string1,
+							client_response2 : input_string2,
+							client_response3 : input_string3,
+
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                             },
+                            success : function(json) 
+							{
+						 
+	                         <!-- alert(json.server_response,json.server_response1,json.server_response2,json.server_response3); -->
+                         	
+						var datelist=  json.server_response2;
+						var countid =  json.server_response;
+						var reqids=json.server_response1;
+						var countofresume=json.server_response3;
+						var title1=json.server_response4;
+						var status=json.server_response8;
+						
+						var count_list= json.server_response5;
+						var idfordate= json.server_response6;
+						var countid1=json.server_response7;
+						var title2=json.server_response9;
+						var date=json.server_response10;
+						var combineresult=json.server_response11;
+						var dsrcombineresult=json.server_response13;
+						var table = document.getElementById("table1");	
+						var tbody = document.createElement('tbody');
+						$(table1).empty();
+					
+					$("table1 > tbody").children().remove();
+										   
+	<!-- DSR -->
+	
+   if(status=="DSR")
+{
+  // alert(idfordate);
+   
+   var l=idfordate.length;
+   if(l==0)
+   {
+        l=1
+   }
+   var body = document.getElementsByTagName('body')[0];     
+   var table = document.getElementById("table1");
+   table.setAttribute('border','2');
+ 
+   var tbody = document.createElement('tbody');
+ 
+ <!-- title of table-->
+   var title = document.createElement("tr");
+ 
+   var cell = document.createElement("td");
+   cell.setAttribute('style','color:Maroon;font-weight:bold');
+   cell.setAttribute('colspan',l+1);
+   cell.setAttribute('class','centerText');
+   cell.textContent = title2;
+   console.log("l",l);
+   title.appendChild(cell);
+   tbody.appendChild(title);
+ 
+   var newRow = document.createElement("tr");
+   var flag=0
+ 
+ 	
+						// set text
+		if (flag==0)
+{
+      var cell = document.createElement("td");
+      cell.setAttribute('style','color:Maroon;font-weight:bold');	  
+      cell.textContent = "REQUIREMENT IDS/DATE:";
+	   cell.setAttribute('class','td2');	
+      newRow.appendChild(cell);
+	  flag=1
+ }		
+			var cell = document.createElement("td");
+			cell.setAttribute('colspan',countid1);
+			cell.setAttribute('class','centerText');
+            cell.textContent = date;
+			
+            console.log(date);
+			newRow.appendChild(cell);
+		  			 			 
+		       // Your id logic goes here  
+     
+
+            tbody.appendChild(newRow);
+ 
+ 
+ 
+         var flag=0 
+         $.each(dsrcombineresult, function (index, value1)   
+     { 
+	
+			//if (value1[0]=='None')
+		//	{
+			    //alert ("hi");
+		//	}
+		  //    else
+		//	  {
+			  
+			   var newRow1 = document.createElement("tr");
+		       var obj= value1
+			   console.log("VALUE",value1);
+          	
+            <!-- countid forloop-->		
+		    
+			   var flag1=0;
+			   
+			   $.each(obj, function (index, value2) 
+			{
+						
+		     	 console.log("VALUE2::::",value2);
+				
+		             var cell = document.createElement("td");
+			
+			        if (flag1==0)
+			      {
+                      
+			          flag1=1;
+                  }	
+			 
+          //  cell.setAttribute('class','centerText');					
+                   cell.textContent = value2;  
+                   cell.setAttribute('class','td2');	
+                   console.log("VALUE",value2);
+		           newRow1.appendChild(cell);
+			
+		 			      
+             });
+			    tbody.appendChild(newRow1); 
+			//}	
+			
+	      });
+	 
+	 
+	 table.appendChild(tbody);
+	 
+	 body.appendChild(table);
+}	
+
+
+<!--  WSR -->
+
+
+
+
+
+  if(status=="WSR")
+
+{	
+ var flag=0
+ var l=reqids.length
+ var l=l+1
+ 
+ //var newTable = document.createElement('table')
+ var body = document.getElementsByTagName('body')[0];     
+ var table = document.getElementById("table1");
+ table.setAttribute('border','2');
+ 
+ var tbody = document.createElement('tbody');
+ 
+ <!-- title of table-->
+ var title = document.createElement("tr");
+ 
+ var cell = document.createElement("td");
+ cell.setAttribute('style','color:Maroon;font-weight:bold');
+ cell.setAttribute('colspan',l+1);
+ cell.setAttribute('class','centerText');
+ cell.textContent = title1;
+ console.log("l",l);
+ title.appendChild(cell);
+ tbody.appendChild(title);
+ 
+ 
+ var newRow = document.createElement("tr");
+  
+  
+ 
+ <!-- dates for loop-->
+	
+		<!-- countid forloop-->	
+	
+	for(var j =0;j < countid.length;j++)
+    {
+	         //var cell = document.createElement('td colspan=', countid[j]);			
+						// set text
+		if (flag==0)
+{
+      var cell = document.createElement("td");
+      cell.setAttribute('style','color:Maroon;font-weight:bold');	  
+      cell.textContent = "REQUIREMENT IDS/DATES:";
+      newRow.appendChild(cell);
+	  flag=1
+ }		
+			var cell = document.createElement("td");
+			//cell.setAttribute('colspan',countid[j]);
+			cell.setAttribute('class','centerText');
+			cell.setAttribute('style','color:Maroon;font-weight:bold');
+            cell.textContent = datelist[j];
+			
+            console.log(datelist[j]);
+			newRow.appendChild(cell);
+		  	 			 
+		       // Your id logic goes here  
+	
+     }
+
+ tbody.appendChild(newRow);
+ 
+ 
+	 
+    	 var flag=0 
+         $.each(combineresult, function (index, value1) 
+	   
+     { 
+	
+			if (value1[0]=='None')
+			{
+			    //alert ("hi");
+			}
+		      else
+			  {
+			  
+			   var newRow1 = document.createElement("tr");
+		       var obj= value1
+			   console.log("VALUE",value1);
+          	
+            <!-- countid forloop-->		
+		    
+			   var flag1=0;
+			   
+			   $.each(obj, function (index, value2) 
+			{
+			
+			
+		     	 console.log("VALUE2::::",value2);
+				 
+				
+		             var cell = document.createElement("td");
+			
+			        if (flag1==0)
+			      {
+                      cell.setAttribute('class','td1');	
+					  cell.setAttribute('class','centerText');	
+			          flag1=1;
+                  }	
+			 
+          //  cell.setAttribute('class','centerText');					
+                   cell.textContent = value2;  
+           	
+                   console.log("VALUE",value2);
+		           newRow1.appendChild(cell);
+			
+		 			      
+             });
+			    tbody.appendChild(newRow1); 
+			}	
+		
+	      });
+	 //
+	 
+		 
+	 <!-- for loops for list of lists-->	
+	 	 
+	 table.appendChild(tbody);
+	 
+	 body.appendChild(table);
+ <!-- till here its working-->
+}
+	 //
+	// });
+	 
+	 
+	
+ <!-- till here its working-->
+
+
+
+   // }); --> -->
+                          },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+}
+
+</script>
+
+</html>

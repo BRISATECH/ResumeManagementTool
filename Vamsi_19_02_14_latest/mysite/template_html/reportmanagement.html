@@ -1,0 +1,1112 @@
+<!DOCTYPE html>
+<!--code by lavita-->
+<!-- THIRD PAGE (search)-->
+<!--code by akshay-->
+{% load hotkeys %}
+<html>
+<head><h1 style="text-align:center"><font size="20">Report Management</font></h1>
+{% setup_hotkeys %}
+<!--code by akshay-->
+ <meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+  
+  <script src="http://code.jquery.com/jquery-1.8.2.js" type="text/javascript"></script>
+  
+  <script type="text/javascript"
+    src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
+  <script type="text/javascript" src="../src/jquery.shorten.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script src="jquery.shorten.js"></script>
+  
+  
+<style type="text/css">
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+
+#Tab{
+text-decoration: none;
+border-color:black;
+color: white;
+background-color:#2E0F94 ;
+border-style:solid dashed none dashed; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+
+
+
+
+
+#ActiveTab{
+font-size:120%;
+text-decoration: none;
+border-color:#FFFFFF;
+color: black;
+background-color:yellow;
+border-style:ridge; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+table{
+border-color:yellow;
+color: black;
+background-color:#FFFFFF;
+border-style:ridge; 
+border-width:1px;
+width:100%;
+}
+input[type="text"]{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;width:100%;
+}
+select{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;
+width:100%;
+}        
+.Index{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:solid;
+}
+.tableDivisionTask{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+width:20%;
+}
+.tableDivision{
+color: black;
+background-color:#FF00FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+}
+tr,td {
+  padding: 0.0%;
+  width:10%;
+  
+}
+
+
+
+
+#outer {
+    overflow:hidden;
+    width:100%;
+    height:80px;
+}
+#inner {
+    overflow:scroll; 
+    width:106%;
+    height:96px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+
+<title>My Task</title>
+<style type="text/css">
+    .title { color: blue; text-decoration: bold; text-size: 1em; }
+    .author { color: gray; }
+	.hidden{visibility:hidden}
+</style>
+
+
+<style>
+.td1 {
+  padding: 0.0%;
+  width:10%;
+  
+}
+
+</style>
+
+<style>
+.td2{
+  padding: 0.0%;
+  width:5%;
+   text-align: center;
+  
+}
+
+</style>
+<style>
+.center
+{
+float:center;
+width:500px;
+height:250px;
+background-color:#b0e0e6;
+}
+</style>
+
+<style>
+.centerText{
+   text-align: center;
+}
+</style>
+
+
+<style>
+.left
+{
+float:left;
+width:200px;
+
+}
+</style>
+
+
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+ 
+ 
+ 
+<script>
+$(document).ready(function() {
+	
+	$(".comment").shorten();
+	});
+</script>	 
+
+
+
+
+
+<!-- <style type="text/css">
+body{
+font-family: Calibri, Arial;
+margin: 0px;
+padding: 0px;
+}
+
+.morecontent span {
+display: none;
+}
+</style> -->
+
+ 
+<script>
+  $(document).ready(function() {
+    $("#datepicker1").datepicker();
+  });
+  </script>
+  
+  
+
+
+  
+  
+<script>
+function updateOptions( ) {
+
+   var input_string = $("#Client").val();
+   $.ajax({
+                        url : "/output2/",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : input_string,
+
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) 
+							{
+						console.log(json.server_response);	
+		$('#ReqId').html('');					
+var obj_array =  json.server_response;
+		var flag=0;				
+						$.each(obj_array, function (index, value) {
+						
+			if(flag==0)
+{			
+		$('#ReqId').append('<option>'+''+'</option>');
+			flag=1;
+		}
+      $('#ReqId').append('<option>'+value+'</option>'); // Your id logic goes here
+        console.log(value);
+    });
+	
+        
+                            },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+}
+
+</script>
+ 
+</head>
+
+
+
+
+<body>
+<div class="left">
+<a href='/resunsub/' >   Resume Submit    </a>
+
+</div>
+
+
+<div class="left">
+
+<a href='/requiresub/' >    Requirement Submit  </a></br> </div>
+
+<div class="left">
+
+<a href='/RequirementManagement/'> Requirement Management </a></div>
+<a href='/ReportManagementfile/'> Report Management </a> </div>&nbsp;&nbsp;
+
+<!--<div class="left">
+
+<div class="left">-->
+<a href='/query/' style= "COLOR: #eb7501;" >     Search    </a> </div>&nbsp; &nbsp;
+
+<a href='/help1/'>      help    </a> &nbsp; &nbsp;
+
+<!--<a href='/openstateresume/' > Open State Resumes </a></br>--> </div> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<!--<div class="left">-->
+<a href='/logout/'>            Sign Out    </a></div><br><br>
+
+
+<center>
+<form id="login1" method="POST" name="myForm" action="/Export_to/">
+
+<DIV class="center">
+<td>Source Name:</td>
+<td><div >
+    
+    <select class="form-control element select medium" id="Source" name="Source" title="Choose Source Name" onChange="source_name();">
+   
+
+<!-- {% for c in getSource %}
+    <option value="{{ c }}"{% ifequal c.val Source %} selected="selected"{% endifequal %}>{{ c }}</option>
+    {% endfor %} -->
+
+	<option selected="selected" value=""  ></option>
+    
+	{% for result in getSource %}
+
+
+<option   value={{result}} >{{result}}</option>
+
+ {% endfor %}
+</select>
+
+
+
+  </div>  
+   <td>  <label for="description"  for="Product">Reports :</label> 
+ 
+ </td>
+
+<td><div >
+    <!-- <label for="description"  for="Product">Product Name:</label>-->
+   <select id="status" name="status" title="Choose type of Report" disabled="true" onChange="Reports_methd();">
+  
+	<option  selected="selected" value="WSR"  >WSR</option>
+	<option   value="DSR"  >DSR</option>
+    
+	<!-- {% for result in status %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}-->
+</select>
+  </div>
+</td>
+<br>
+
+
+<td>Start Date:</td>
+<td><input id="datepicker" disabled="true"  name="datepicker" value="{{Date1}}"  onClick="date_change();">  </td></br><br>
+
+
+<td>End Date: </td>
+<td><input id="datepicker1" disabled="true"  name="datepicker1" value="{{Date2}}" onClick="date_change();">  </td><br><br>
+
+ 
+ 
+   <!-- <select  id="status" name="status" title="Enter Product Name" onChange="disableOptions();"> 
+
+     <option selected="selected" value=""  ></option>
+    
+	{% for result in status %}
+
+
+<option   value={{result}} >{{result}}</option>
+
+ {% endfor %}
+
+ </select> </div> </td>-->
+	<input type="submit" id="export"  value = "EXPORT" name="export" disabled="true" class="btn btn-default loginprim" > 
+	
+	
+	<!--<form id="login1" method="POST" action="/display_report/">-->
+	
+	<input type="button" id="show"  value = "Show Report" name="show" onClick="display_report();"></br></DIV></br></div>
+	
+
+</form></center>
+
+<table id="table1"> </table>
+
+
+<!-- Hyperlinks -->
+
+
+
+
+<br><br><br>
+
+
+
+<!----------- newly added for REPORTS---------------------->
+<!--------   ------------------------------------------------------------------------------>
+<!--------   ------------------------------------------------------------------------------>
+<script>
+window.setTimeout('checkIfContinue()',1*60*1000);  
+
+function checkIfContinue()
+{
+  var Source = document.forms["myForm"]["Source"].value;
+if (Source == null ||Source == "")
+  {
+  window.location.href = '/logintask/';
+  }
+  var status = document.forms["myForm"]["status"].value;
+if (status == null || status== "")
+  {
+  window.location.href = '/logintask/';
+  }
+  var datepicker = document.forms["myForm"]["datepicker"].value;
+if (datepicker == null || datepicker == "")
+  {
+  window.location.href = '/logintask/';
+  }
+  var datepicker1 = document.forms["myForm"]["datepicker1"].value;
+if (datepicker1 == null || datepicker1 == "")
+  {
+  window.location.href = '/logintask/';
+  }
+}
+</script>
+
+
+<script>
+function source_name(){
+//alert('hi');
+//document.getElementIdBy('status').disabled="false";
+document.getElementById("status").disabled=false;
+var report=document.getElementById("status").value ;
+ //alert(report);
+ 
+ if (report =='WSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+  document.getElementById("datepicker1").disabled=false;
+  //document.getElementById("export").disabled=false;
+ }
+ else if(report=='DSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+ document.getElementById("datepicker1").disabled=true;
+ //document.getElementById("export").disabled=false;
+ }
+}
+
+</script>
+
+
+
+<script>
+function status_Change()
+{
+   var e = document.getElementById("status2");
+   var input_string = e.options[e.selectedIndex].text;
+ //  alert(input_string);
+   document.getElementById("Status").value =input_string;
+}
+</script>
+
+
+<script>
+function Reports_methd()
+{
+ var report=document.getElementById("status").value ;
+ //alert(report);
+ 
+ if (report =='WSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+  document.getElementById("datepicker1").disabled=false;
+  //document.getElementById("export").disabled=false;
+ }
+ else if(report=='DSR')
+ {
+ document.getElementById("datepicker").disabled=false;
+ document.getElementById("datepicker1").disabled=true;
+ //document.getElementById("export").disabled=false;
+ }
+}
+
+</script>
+
+
+
+<script>
+function date_change()
+
+{
+ var report=document.getElementById("status").value ;
+ //alert(report);
+ 
+ if (report =='DSR')
+ {
+   var date=document.getElementById("datepicker").value ;
+  // if (date!='')
+   //{
+   
+   document.getElementById("export").disabled=false;
+ //  }
+   
+   // alert('hi');
+    //document.getElementIdBy('status').disabled="false";
+	 document.getElementById("datepicker1").disabled=true;
+	 
+     
+	 
+}
+
+if (report =='WSR')
+{
+    var date=document.getElementById("datepicker").value ;
+	var date1=document.getElementById("datepicker1").value ;
+   // alert('hi');
+    //document.getElementIdBy('status').disabled="false";
+	//if (date!="" and date1!="")
+	//{
+	
+     document.getElementById("export").disabled=false;
+	// }
+}
+}
+
+</script>
+
+
+
+<script>
+function hideCol(columnClass)
+
+{
+$('table .'+columnClass).each(function(index) {
+$(this).hide();
+});
+
+$('ul#hiddenCols').append('<li id="'+columnClass
++'"><a href="javascript:;" onclick="showCol(\''
++columnClass+'\');">Show '+columnClass+'</a></li>');
+} 
+
+
+</script>
+
+
+
+<script>
+
+function showCol(columnClass){
+$('table .'+columnClass).each(function(index) {
+$(this).show();
+});
+
+$('li#'+columnClass).remove();
+}
+</script>
+
+
+
+
+<!--</body>-->
+<script>
+function display_report()
+
+ {
+  //alert("hi");
+   var input_string = $("#datepicker").val();
+   var input_string1 = $("#datepicker1").val();
+    var input_string2 = $("#Source").val();
+	 var input_string3 = $("#status").val();
+   $.ajax({
+                        url : "/display_report/",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : input_string,
+							client_response1 : input_string1,
+							client_response2 : input_string2,
+							client_response3 : input_string3,
+
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                             },
+                            success : function(json) 
+							{
+						 
+	                         <!-- alert(json.server_response,json.server_response1,json.server_response2,json.server_response3); -->
+                         	
+						var datelist=  json.server_response2;
+						var countid =  json.server_response;
+						var reqids=json.server_response1;
+						var countofresume=json.server_response3;
+						var title1=json.server_response4;
+						var status=json.server_response8;
+						
+						var count_list= json.server_response5;
+						var idfordate= json.server_response6;
+						var countid1=json.server_response7;
+						var title2=json.server_response9;
+						var date=json.server_response10;
+						var combineresult=json.server_response11;
+						var dsrcombineresult=json.server_response13;
+						
+						var table = document.getElementById("table1");	
+						var tbody = document.createElement('tbody');
+												
+						
+						<!--ALL wsr-->
+						var Source1=json.server_response17;
+						var reporttitle=json.server_response16;
+						var finalresult=json.server_response14;
+						
+						<!--ALL dsr-->
+						//var Source1=json.server_response17;
+						var reporttitle1=json.server_response21;
+						var fresult=json.server_response20;
+						
+						//alert("table");
+						
+						$(table1).empty();
+					
+					$("table1 > tbody").children().remove();
+										   
+	<!-- DSR -->
+	
+   if(status=="DSR")
+{
+   //alert("idfordate");
+   
+   if(Source1=="All")
+
+{
+   var m =0;
+   var body = document.getElementsByTagName('body')[0];     
+   var table = document.getElementById("table1");
+   table.setAttribute('border','2');
+   var tbody = document.createElement('tbody');
+   
+       for (var j =0;j < reporttitle1.length;j++)
+	 {
+	       
+          <!-- title of table-->
+          var title = document.createElement("tr");
+ 
+          var cell = document.createElement("td");
+          cell.setAttribute('style','color:DarkBlue;font-size:20px;font-weight:bold');
+          cell.setAttribute('colspan',3);
+          cell.setAttribute('class','centerText');
+          cell.textContent = reporttitle1[j];
+          //console.log("l",l);
+          title.appendChild(cell); 
+          tbody.appendChild(title);
+		  
+		  var f=0;
+		  var flag1=0;
+		  
+		    
+		            if(f==0)
+			    {
+				    var newRow = document.createElement("tr");
+			    	var cell = document.createElement("td");
+                    cell.setAttribute('style','color:DarkOrange;font-weight:bold');	  
+                    cell.textContent = "REQUIREMENT IDS/DATES:";
+                    newRow.appendChild(cell);
+					f=1;
+				
+			    }
+				
+			    	var cell = document.createElement("td");
+			       //cell.setAttribute('colspan',countid[j]);
+		        	cell.setAttribute('class','centerText');
+		        	cell.setAttribute('style','color:DarkOrange;font-weight:bold');
+                    cell.textContent = date;
+			
+                    console.log(date);
+		        	newRow.appendChild(cell);
+				    tbody.appendChild(newRow);
+					
+					
+					 var flag2=1;
+				   
+			          var n =0;
+					  
+					while(m<fresult.length)					
+				 {			   		           			
+            				var obj=fresult[m];
+							console.log("fresult[m]",fresult[m]);   
+					 
+					  for (var n =0;n < fresult[m].length;n++)
+					{	   
+					     
+						  var obj1 =obj[n];
+						  console.log("obj[n]",obj[n]);
+					      
+						  var newRow = document.createElement("tr");
+						  
+						 for (var z =0;z < obj1.length;z++)
+						 
+					{	
+					         console.log("obj1[z]",obj1[z]);
+						 
+							 var cell = document.createElement("td");
+			               
+		                 	cell.setAttribute('class','centerText');
+		                	cell.setAttribute('style','color:Maroon;font-weight:bold');
+                            cell.textContent = obj1[z];
+			                      
+		                	newRow.appendChild(cell);		 								            
+						
+						} 
+						    tbody.appendChild(newRow);
+						    flag2=2;	
+			   
+                  }					
+					
+					     if(flag2==2)
+					  {
+				        	break;
+					  }
+				}
+					m=m+1;
+					
+		        table.appendChild(tbody);
+	 
+	           body.appendChild(table);
+		  
+				   
+   
+   }
+   
+}
+ 
+ 
+   
+  else
+{  
+   var l=idfordate.length;
+   
+   if(l==0)
+   {
+        l=1
+   }
+   var body = document.getElementsByTagName('body')[0];     
+   var table = document.getElementById("table1");
+   table.setAttribute('border','2');
+ 
+   var tbody = document.createElement('tbody');
+ 
+ <!-- title of table-->
+   var title = document.createElement("tr");
+ 
+   var cell = document.createElement("td");
+   cell.setAttribute('style','color:Maroon;font-weight:bold');
+   cell.setAttribute('colspan',l+1);
+   cell.setAttribute('class','centerText');
+   cell.textContent = title2;
+   console.log("l",l);
+   title.appendChild(cell);
+   tbody.appendChild(title);
+ 
+   var newRow = document.createElement("tr");
+   var flag=0
+ 
+ 	
+						// set text
+		if (flag==0)
+{
+      var cell = document.createElement("td");
+      cell.setAttribute('style','color:Maroon;font-weight:bold');	  
+      cell.textContent = "REQUIREMENT IDS/DATE:";
+	   cell.setAttribute('class','td2');	
+      newRow.appendChild(cell);
+	  flag=1
+ }		
+			var cell = document.createElement("td");
+			cell.setAttribute('colspan',countid1);
+			cell.setAttribute('class','centerText');
+            cell.textContent = date;
+			
+            console.log(date);
+			newRow.appendChild(cell);
+		  			 			 
+		       // Your id logic goes here  
+     
+
+            tbody.appendChild(newRow);
+ 
+ 
+ 
+         var flag=0 
+         $.each(dsrcombineresult, function (index, value1)   
+     { 
+	
+			//if (value1[0]=='None')
+		//	{
+			    //alert ("hi");
+		//	}
+		  //    else
+		//	  {
+			  
+			   var newRow1 = document.createElement("tr");
+		       var obj= value1;
+			   console.log("VALUE",value1);
+          	
+            <!-- countid forloop-->		
+		    
+			   var flag1=0;
+			   
+			   $.each(obj, function (index, value2) 
+			{
+						
+		     	 console.log("VALUE2::::",value2);
+				
+		             var cell = document.createElement("td");
+			
+			        if (flag1==0)
+			      {
+                      
+			          flag1=1;
+                  }	
+			 
+          //  cell.setAttribute('class','centerText');					
+                   cell.textContent = value2;  
+                   cell.setAttribute('class','td2');	
+                   console.log("VALUE",value2);
+		           newRow1.appendChild(cell);
+			
+		 			      
+             });
+			    tbody.appendChild(newRow1); 
+			//}	
+			
+	      });
+	 
+	 
+	 table.appendChild(tbody);
+	 
+	 body.appendChild(table);
+}	
+
+}
+<!--  WSR -->
+
+
+
+
+  if(status=="WSR")
+
+{	
+
+ if(Source1=="All")
+
+{
+	//alert("wsr");
+     var body = document.getElementsByTagName('body')[0];   
+	 var l=datelist.length;
+	 var m =0;
+	 table.setAttribute('border','2');
+	 
+       for (var j =0;j < reporttitle.length;j++)
+	 {
+	       
+          <!-- title of table-->
+          var title = document.createElement("tr");
+ 
+          var cell = document.createElement("td");
+          cell.setAttribute('style','color:DarkBlue;font-size:20px;font-weight:bold');
+          cell.setAttribute('colspan',l+1);
+          cell.setAttribute('class','centerText');
+          cell.textContent = reporttitle[j];
+          console.log("l",l);
+          title.appendChild(cell);
+          tbody.appendChild(title);
+		  
+		  var f=0;
+		  var flag1=0;
+		  
+		    for (var k =0;k < datelist.length;k++)
+		  {
+		            if(f==0)
+			    {
+				    var newRow = document.createElement("tr");
+			    	var cell = document.createElement("td");
+                    cell.setAttribute('style','color:DarkOrange;font-weight:bold');	  
+                    cell.textContent = "REQUIREMENT IDS/DATES:";
+                    newRow.appendChild(cell);
+					f=1;
+				
+			    }
+				
+			    	var cell = document.createElement("td");
+			       //cell.setAttribute('colspan',countid[j]);
+		        	cell.setAttribute('class','centerText');
+		        	cell.setAttribute('style','color:DarkOrange;font-weight:bold');
+                    cell.textContent = datelist[k];
+			
+                    console.log(datelist[k]);
+		        	newRow.appendChild(cell);
+				    tbody.appendChild(newRow);
+		  
+		  }
+				   
+				   var flag2=1;
+				   
+			          var n =0;
+					  
+			 		
+                      while(m<finalresult.length)					
+					  {
+						   		           			
+            				var obj=finalresult[m];
+							console.log("finalresult[m]",finalresult[m]);   
+					 
+					  for (var n =0;n < finalresult[m].length;n++)
+					{	   
+					     
+						  var obj1 =obj[n];
+						  console.log("obj[n]",obj[n]);
+					      
+						  var newRow = document.createElement("tr");
+						  
+						 for (var z =0;z < obj1.length;z++)
+					{	
+					
+					     console.log("obj1[z]",obj1[z]);
+						 
+							 var cell = document.createElement("td");
+			               
+		                 	cell.setAttribute('class','centerText');
+		                	cell.setAttribute('style','color:Maroon;font-weight:bold');
+                            cell.textContent = obj1[z];
+			                      
+		                	newRow.appendChild(cell);		 								            
+						
+						} 
+						 tbody.appendChild(newRow);
+						 flag2=2;	
+			   
+                  }					
+					
+					     if(flag2==2)
+					  {
+				        	break;
+					  }
+					}
+					m=m+1;
+					
+	          // });
+			   
+			   table.appendChild(tbody);
+	 
+	           body.appendChild(table);
+	 }
+}
+
+  else
+
+{
+
+   var flag=0;
+   var l=reqids.length;
+   var l=l+1;
+ 
+ //var newTable = document.createElement('table')
+ var body = document.getElementsByTagName('body')[0];     
+ var table = document.getElementById("table1");
+ table.setAttribute('border','2');
+ 
+ var tbody = document.createElement('tbody');
+ 
+ <!-- title of table-->
+ var title = document.createElement("tr");
+ 
+ var cell = document.createElement("td");
+ cell.setAttribute('style','color:Maroon;font-weight:bold');
+ cell.setAttribute('colspan',l+1);
+ cell.setAttribute('class','centerText');
+ cell.textContent = title1;
+ console.log("l",l);
+ title.appendChild(cell);
+ tbody.appendChild(title);
+ 
+ 
+ var newRow = document.createElement("tr");
+  
+  
+ 
+ <!-- dates for loop-->
+	
+		<!-- countid forloop-->	
+	
+	for(var j =0;j < countid.length;j++)
+    {
+	         //var cell = document.createElement('td colspan=', countid[j]);			
+						// set text
+		if (flag==0)
+{
+      var cell = document.createElement("td");
+      cell.setAttribute('style','color:Maroon;font-weight:bold');	  
+      cell.textContent = "REQUIREMENT IDS/DATES:";
+      newRow.appendChild(cell);
+	  flag=1
+ }		
+			var cell = document.createElement("td");
+			//cell.setAttribute('colspan',countid[j]);
+			cell.setAttribute('class','centerText');
+			cell.setAttribute('style','color:Maroon;font-weight:bold');
+            cell.textContent = datelist[j];
+			
+            console.log(datelist[j]);
+			newRow.appendChild(cell);
+		  	 			 
+		       // Your id logic goes here  
+	
+     }
+
+      tbody.appendChild(newRow);
+ 
+ 
+	 
+    	 var flag=0 
+         $.each(combineresult, function (index, value1) 
+	   
+     { 
+	
+			if (value1[0]=='None')
+			{
+			    //alert ("hi");
+			}
+		      else
+			  {
+			  
+			   var newRow1 = document.createElement("tr");
+		       var obj= value1
+			   console.log("VALUE",value1);
+          	
+            <!-- countid forloop-->		
+		    
+			   var flag1=0;
+			   
+			   $.each(obj, function (index, value2) 
+			{
+			
+			
+		     	 console.log("VALUE2::::",value2);
+				 
+				
+		             var cell = document.createElement("td");
+			
+			        if (flag1==0)
+			      {
+                      cell.setAttribute('class','td1');	
+					  cell.setAttribute('class','centerText');	
+			          flag1=1;
+                  }	
+			 
+          //  cell.setAttribute('class','centerText');					
+                   cell.textContent = value2;  
+           	
+                   console.log("VALUE",value2);
+		           newRow1.appendChild(cell);
+	 			      
+             });
+			    tbody.appendChild(newRow1); 
+			}	
+		
+	      });
+	 //
+	 
+		 
+	 <!-- for loops for list of lists-->	
+	 	 
+	 table.appendChild(tbody);
+	 
+	 body.appendChild(table);
+ <!-- till here its working-->
+}
+	 //
+}	// });
+	 
+	 
+	
+ <!-- till here its working-->
+
+
+
+   // }); --> -->
+                          },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+}
+
+</script>
+</body>
+</html>
+<!--end of lavita code-->

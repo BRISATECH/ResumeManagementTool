@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<script type="text/javascript">
+
+
+</script>
+<style type="text/css">
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+#Tab{
+text-decoration: none;
+border-color:black;
+color: white;
+background-color:#2E0F94 ;
+border-style:solid dashed none dashed; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+#ActiveTab{
+font-size:120%;
+text-decoration: none;
+border-color:#FFFFFF;
+color: black;
+background-color:yellow;
+border-style:ridge; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+table{
+border-color:yellow;
+color: black;
+background-color:#FFFFFF;
+border-style:ridge; 
+border-width:1px;
+width:100%;
+}
+input[type="text"]{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;width:100%;
+}
+select{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;
+width:100%;
+}        
+.Index{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:solid;
+}
+.tableDivisionTask{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+width:20%;
+}
+.tableDivision{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+}
+#outer {
+    overflow:hidden;
+    width:100%;
+    height:80px;
+}
+#inner {
+    overflow:scroll; 
+    width:106%;
+    height:96px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<script>
+function ddselect()
+{
+var e = document.getElementById("status");
+}
+function ddselectRecuring()
+{
+var e = document.getElementById("recuring");
+}
+function ddselectFunction()
+{
+var e = document.getElementById("function");
+}
+<!-- var strUser = e.options[e.selectedIndex].value;alert("Process blocked by user");-->
+</script>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+<title>Edit Task</title>
+<nav>
+</nav>
+</head>
+<body style="color: black;background-color:#9ACD32; ">
+<a id="ActiveTab"href="/myTask/" class="btn btn-default loginprim" >My Task</a>
+<a id="Tab" href="/taskAsin/"  class="btn btn-default loginprim" >Create Task</a>
+<a id="Tab" href="/search/"class="btn btn-default loginprim" style="">Search</a>
+<a href="/login_page/"class="btn btn-default loginprim">Sign-Out</a>
+<a href="/AccountSetting/"class="btn btn-default loginprim" style="">setting</a>
+<form id = "taskAssin" method="post" action="/taskEditSave/">
+<table border = "1" > <!-- border = "0"  -->
+<tr>
+<td></td>
+<td><input type="text" value="{{taskDescriotion}}"placeholder="Task Description" class = "form-control" name="taskDescription" style=""></td>
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+  $(function() {
+    $( "#datepicker" ).datepicker();
+  });
+  </script>
+<td><input id="datepicker"  type="text" value="{{startDate}}"placeholder="Start Date" class = "Function" name="startDate"  size="7" style="";"></td>
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <link rel="stylesheet" href="/resources/demos/style.css">
+<script>
+  $(function() {
+    $( "#datepicker2" ).datepicker();
+  });
+  </script>
+<td><input id="datepicker2" type="text" value="{{endDate}}"placeholder="End Date" class = "Function" " name="endDate" size="7" style=""></td>
+<td><input type="text" value="{{ASSINBY}}"placeholder="Assign By" class = "form-control" name="ASSINBY"  size="8" style=""></td>
+<td><input type="text" value="{{owner}}"placeholder="Owner" class = "form-control" name="owner"  size="8" style=""></td>
+<td>
+<select id="status" value = "{{status}}"onchange="ddselect();"class = "form-control" name="state" style="">
+  <option value=""></option>
+  <option value="blocked" {% if status == "blocked" %}
+  											selected 
+  												{% endif %}>Blocked</option>
+  <option value="started" {% if status == "started" %}
+  											selected 
+  												{% endif %}>Started</option>
+  <option value="20%" {% if status == "20%" %}
+  											selected 
+  												{% endif %}>20%</option>
+  <option value="40%" {% if status == "40%" %}
+  											selected 
+  												{% endif %}>40%</option>
+  <option value="60%" {% if status == "60%" %}
+  											selected 
+  												{% endif %}>60%</option>
+  <option value="80%" {% if status == "80%" %}
+  											selected 
+  												{% endif %}>80%</option>
+  <option value="100%" {% if status == "100%" %}
+  											selected 
+  												{% endif %}>100%</option>
+</select></td></td>
+<td><input type="text" value="{{note}}" placeholder="Note" class = "form-control" name="note" style=""></td>
+<td><input type="text" value="{{attachment}}"placeholder="Attachment" class = "form-control" name="attachment" style=""></td>
+<td><select id="recuring" value = "{{recuring}}" onchange="ddselectRecuring();" class = "form-control" name="recurringTask"
+style="">
+  <option value=""></option>
+  <option value="One Time" {% if recuring == "One Time" %}
+  												selected 
+  													{% endif %}>One Time</option>
+  <option value="Daily" 		{% if recuring == "Daily" %}
+  												selected 
+  													{% endif %}>Daily</option>
+  <option value="Weekly" 	{% if recuring == "Weekly" %}
+  												selected 
+  													{% endif %}>Weekly</option>
+  <option value="Monthly"	{% if recuring == "Monthly" %}
+  												selected 
+  													{% endif %}>Monthly</option>
+</select></td>
+<td> 
+<select id="function" value = "{{Fungction}}" onchange="ddselectFunction();" class = "form-control" name="function"
+style="">
+  <option value=""></option>
+  <option value="HR" {% if Fungction == "HR" %}
+  											selected 
+  												{% endif %}>HR</option>
+  <option value="Technical Manager" {% if Fungction == "Technical Manager" %}
+  											selected 
+  												{% endif %}>Technical Manager</option>
+  <option value="Senior Manager" {% if Fungction == "Senior Manager" %}
+  											selected 
+  												{% endif %}>Senior Manager</option>
+</select>
+</td>
+</tr>
+<tr></tr>
+<tr>
+<td colspan="8" ><font color="blue">Editing task "</font><font color="red">{{taskDescriotion}}</font><font color="blue">"</font> </td>
+<td colspan="2">
+<input id="submit"type ="submit" value = "Save" class="btn btn-default loginprim"></td>
+</tr>
+<!-- </table> -->
+</form>
+<!-- <table border = "1" style="color: black;background-color:#FFFFFF; "> -->
+<tr>
+<th></th>
+<th>Task</th>
+<th>Start Date</th>
+<th>End Date</th>
+<th>Assine  by</th>
+<th>Owner</th>
+<th>Status</th>
+<th>Note</th>
+<th>Attachment</th>
+<th>Recurring</th>
+<th>Function</th>
+</tr>
+{% for result in listOfList %}
+	<form id="listOfSearch{{result.10}}" method="post" action="/editMyTask/">
+	<tr>
+	<td class="Index">{{result.0}}</td>
+	<td class="tableDivisionTask">	
+	<a href="#" onclick="document.forms['listOfSearch{{result.10}}'].submit();">{{result.1}}<input name = "uniqID" value = "{{result.10}}" id="IdField"  type="text" style="visibility:hidden " size="1"></a></td>
+	<td class="tableDivision">{{result.2}}</td>
+	<td class="tableDivision">{{result.3}}</td>
+	<td class="tableDivision">{{result.11}}</td>
+	<td class="tableDivision">{{result.4}}</td>
+	<td class="tableDivision">{{result.5}}</td>
+		<td class="tableDivision">
+	<div id="outer">
+    <div id="inner">	
+	<p >{{result.6}}</p><!-- {{result.6}} -->
+	</div>
+	</div>
+	</td>
+	<td class="tableDivision">{{result.7}}</td>
+	<td class="tableDivision">{{result.8}}</td>
+	<td class="tableDivision">{{result.9}}</td>
+	</tr>
+	</form> 
+	{%endfor%}
+	
+</table>
+</td></td>
+<font size="3" color="blue">{{uname}}</font><br>
+{{passwrd}}
+</body>
+</html>

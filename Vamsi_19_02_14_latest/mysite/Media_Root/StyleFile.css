@@ -1,0 +1,52 @@
+@CHARSET "ISO-8859-1";
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+#Tab{
+border-color:black;
+color: white;
+background-color:#2E0F94 ;
+border-style:solid dashed none dashed; 
+border-width:1px;
+border-top-right-radius:.5em;
+}
+#ActiveTab{
+border-color:#FFFFFF;
+color: black;
+background-color:yellow;
+border-style:ridge; 
+border-width:1px;
+border-top-left-radius:.5em;
+}
+table{
+border-color:yellow;
+color: black;
+background-color:#FFFFFF;
+border-style:ridge; 
+border-width:1px;
+width:100%;
+}
+input[type="text"]{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;width:100%;
+}
+select{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;
+width:100%;
+}        

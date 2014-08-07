@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<!-- THIRD PAGE (search)-->
+
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  <script type="text/javascript"
+    src="http://viralpatel.net/blogs/demo/jquery/jquery.shorten.1.0.js"></script>
+
+
+<style type="text/css">
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+
+#Tab{
+text-decoration: none;
+border-color:black;
+color: white;
+background-color:#2E0F94 ;
+border-style:solid dashed none dashed; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+#ActiveTab{
+font-size:120%;
+text-decoration: none;
+border-color:#FFFFFF;
+color: black;
+background-color:yellow;
+border-style:ridge; 
+border-width:1px;
+border-top-right-radius:.3em;
+border-top-left-radius:.3em;
+}
+table{
+border-color:yellow;
+color: black;
+background-color:#FFFFFF;
+border-style:ridge; 
+border-width:1px;
+width:100%;
+}
+input[type="text"]{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;width:100%;
+}
+select{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-width:1px;
+width:100%;
+}        
+.Index{
+border-color:#0000FF;
+color: black;
+background-color:#FFFFFF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:solid;
+}
+.tableDivisionTask{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+width:20%;
+}
+.tableDivision{
+color: black;
+background-color:#FF00	FF;
+border-width:1;
+border-color:#0000FF;
+border-top-style:none;
+border-right-style:none;
+border-bottom-style:solid;
+border-left-style:dashed; 
+border-left-style:solid; 
+}
+#outer {
+    overflow:hidden;
+    width:100%;
+    height:80px;
+}
+#inner {
+    overflow:scroll; 
+    width:106%;
+    height:96px;
+}
+</style>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>My Task</title>
+<style type="text/css">
+    .title { color: blue; text-decoration: bold; text-size: 1em; }
+    .author { color: gray; }
+	.hidden{visibility:hidden}
+</style>
+
+<style>
+.right
+{
+float:right;
+width:250px;
+background-color:#b0e0e6;
+}
+</style>
+
+<style>
+.left
+{
+float:left;
+width:200px;
+
+}
+</style>
+<script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+  
+  <script>
+  $(document).ready(function() {
+    $("#datepicker1").datepicker();
+  });
+  </script>
+  
+    <script>
+function updateOptions( ) {
+
+   var input_string = $("#Client").val();
+   $.ajax({
+                        url : "/output1/",
+                        type : "POST",
+                        dataType: "json",
+                        data : {
+                            client_response : input_string,
+
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                            },
+                            success : function(json) 
+							{
+							
+							
+						 
+						console.log(json.server_response);	
+						
+		$('#ReqId').html('');					
+var obj_array =  json.server_response;
+		var flag=0;				
+						$.each(obj_array, function (index, value) {
+						
+			if(flag==0)
+{			
+		$('#ReqId').append('<option>'+''+'</option>');
+			flag=1;
+		}
+      $('#ReqId').append('<option>'+value+'</option>'); // Your id logic goes here
+        console.log(value);
+    });
+	
+	$('#skills').html('');					
+var obj_array =  json.server_response_skills;
+	var f=0;					
+						$.each(obj_array, function (index, value) {
+						
+			if(f==0)		
+			{
+		  $('#skills').append('<option>'+''+'</option>');				
+		  f=1;
+		}
+      $('#skills').append('<option>'+value+'</option>'); // Your id logic goes here
+        console.log(value);
+    });
+	
+		$('#Yearsofexperience').html('');					
+var obj_array =  json.server_response_yrexp;
+	var f=0;					
+						$.each(obj_array, function (index, value) {
+						
+			if(f==0)		
+			{
+		  $('#Yearsofexperience').append('<option>'+''+'</option>');				
+		  f=1;
+		}
+      $('#Yearsofexperience').append('<option>'+value+'</option>'); // Your id logic goes here
+        console.log(value);
+    });
+				  
+        
+                            },
+                              error : function(xhr,errmsg,err) {
+                                alert(xhr.status + ": " + xhr.responseText);
+                             }
+                    });
+
+}
+
+</script>
+</head>
+
+<body>
+
+
+<!--<DIV class="right">-->
+ 
+
+<!-- Hyperlinks -->
+
+<div class="left">
+<a href='/resunsub/' >   Resume Submit    </a>
+
+</div>
+
+
+<div class="left">
+
+<a href='/requiresub/' >    Requirement Submit  </a></br> </div>
+
+<div class="left">
+
+<a href='/RequirementManagement/'> Requirement Management </a><br> </div>
+
+<div class="left">
+
+<div class="left">
+<a href='/query/' style= "COLOR: #eb7501;" >     Search    </a> </div>
+
+
+<!--<a href='/openstateresume/' > Open State Resumes </a></br>--> </div> 
+
+<div class="left">
+<a href='/logout/'>            Sign Out    </a></div>
+
+
+<!-- style="BACKGROUND-COLOR: #ffff80; -->
+
+
+
+<br><br><br>
+
+<form enctype="multipart/form-data"  id="login" method="POST" action="/searchResult/" >
+
+
+
+<table  style="border-color:#8000FF;border-width:1px;">
+<tr></br>
+<td><i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; font-weight:bold; COLOR: #9900ff;">Fill Any of the fields.</i> </td>
+ </br>
+</tr>
+
+<tr> 
+
+<td>Client:</td>
+<td><div class="form-group">
+    
+    <select class="form-control element select medium" id="Client" name="Client" title="Choose Client Name" onChange="updateOptions();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in getClient %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div></td>
+  
+  
+  </tr>
+  <tr>
+  <td>Requirement ID:</td>
+<td>
+<div class="form-group">
+    <!-- <label for="description"  for="Product">Product Name:</label>-->
+   <select class="form-control element select medium" id="ReqId" name="ReqId" title="Choose Requirement ID" selected="selected" onChange="disableOptions();">
+    <option  value=""  ></option>
+    
+	{% for result in requirementids %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div>
+</td>  </tr>
+<!--<td>Name</td>
+<td><input type="text" name="name"  >  </td>
+</tr>
+<tr>
+<td>Mobile Number</td>
+<td><input type="text" id ="Mobile_Number" name="Mobile_Number"   </td>
+</tr>
+
+</tr>-->
+
+
+  
+  
+ <tr> <td>TA Name:</td>
+<td><div class="form-group">
+    
+    <select class="form-control element select medium" id="Name" name="Name" title="Choose  Name" onChange="disableOptions();">
+    <option value={{result}} selected="selected"  ></option>
+    
+	{% for result in getSource %}
+
+
+<option   value={{result}} {% if Name == result %}selected="selected" {% endif %}> {{result}}</option>
+ {% endfor %}
+</select>
+  </div>
+   
+ </td>
+
+</tr>
+
+
+<tr>
+<td>Skills:</td>
+<td><div class="form-group">
+    
+    <select class="form-control element select medium" id="skills" name="skills" title="Choose Skills" onChange="disableOptions();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in getSkill %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div>
+   
+  
+</td></tr>
+<tr>
+<td> Search by only skills:</td>
+ <td><input type="text" id="only_skills" name="only_skills"   title="Enter skills" placeholder="Enter Skills" value="{{only_skills}}"></td><td>  Years of Experience:</td>
+ <td><input type="text" id="yrexp"  placeholder="Enter Years of Experience" name="yrexp" value="{{yrexp}}"></td>
+ 
+ </tr>
+ 
+ 
+ 
+<tr><td>Years of experience:</td>
+<td><div class="form-group">
+    
+    <select class="form-control element select medium" id="Yearsofexperience" name="Yearsofexperience" title="Choose years of experience" >
+     <option selected="selected" value=""  ></option>
+    
+	
+
+
+
+</select>
+  </div>
+   
+  
+</td></tr>
+
+
+<tr>
+<!--<tr>
+<td>Pancard</td>
+<td><input type="text" id ="PANCARD"  name="PANCARD" >  </td>
+</tr>-->
+<td>Start Date:</td>
+<td><input id="datepicker"   name="datepicker" value="{{Date1}}"  >  </td></br>
+</tr>
+
+<tr>
+
+<td>End Date: </td>
+<td><input id="datepicker1"   name="datepicker1" value="{{Date2}}" onClick="date_change();">  </td>
+
+</tr>
+
+<tr>
+</tr>
+
+<td></td>
+<td>
+
+
+
+<input type="submit" value = "search" id="search"   class="btn btn-default loginprim" ></td>
+</form>
+
+<br>{{msg}} <br><br>
+
+
+
+<td colspan="5" ><font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT';">{{msgRed}}</i>
+</font>
+
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT'; COLOR: #0000a0;">{{msgBlue}}</i>
+</font>
+
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; COLOR: #80ff00;">{{msgGreen}}</i>
+</font>
+
+</td>
+</tr>
+</form>
+</table>
+<br>
+<form enctype="multipart/form-data"  id="login" method="post" action="/searchResume/" >
+<input type="submit" value = "Resumes" class="btn btn-default loginprim" >
+</form>
+<br>
+<!--<form enctype="multipart/form-data"  id="login" method="post" action="/searchRequirements/" >
+<input type="submit" value = "Requirements" class="btn btn-default loginprim" >
+</form>-->
+
+<ul id="hiddenCols"></ul>
+<table style="border-style:solid;border-color:CadetBlue;border-width:1pt;" border = 1px>
+<tr>
+<th>Requirement ID</th>
+<th>Client</th>
+<th>Name</th>
+<th>Mobile Number</th>
+<th>Existing Status of Resume</th>
+<!--<th>Existing Status</th>-->
+
+<th>New Status of Resume</th>
+<!--<th>New Status</th>-->
+
+<th>CTC</th>
+<th>ECTC</th>
+<th>Notice Period</th>
+
+<th>Skills</th>
+<th>Years of experience</th>
+<th>Current location</th>
+<th class="col4">Location of Interest<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"><br></a></th>
+<th class="col4">Email<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+<th class="col4">Date of birth<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+<th class="col4">Submit/Source<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+<th class="col4">Date of Submission<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+<th class="col4">Note<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+<th >Resume</th>
+<th >History</th>
+
+<th class="col4">Pancard<a class="hide"
+href="javascript:;" onclick="hideCol('col4');"></a></th>
+
+
+
+<form enctype="multipart/form-data"  id="login" method="post" action="/saveEditResume/" >
+<tr>
+<td><input type="text" name="RequirementID" value="{{RequirementID}}" disabled="true">  </td>
+<input type="hidden" id="RequirementID" name="RequirementID" value="{{RequirementID}}" >
+
+<td><input type="text" name="Client" value="{{Client}}" disabled="true">  </td>
+<input type="hidden" name="Client" value="{{Client}}" >
+
+<td><input type="text" name="name" value="{{name}}" disabled="true">  </td>
+<input type="hidden"  name="name" value="{{name}}" >
+
+<td>{{Mobile_Number}}<input name = "Mobile_Number" value = "{{Mobile_Number}}" id="IdField"  type="hidden" ></td>
+<input type="hidden"  name="Mobile_Number" value="{{Mobile_Number}}" >
+
+<td><input type="text" id="statusofresume1" name="statusofresume1" value="{{statusofresume1}}" disabled="true">  </td>
+<input type="hidden" id="statusofresume12" name="statusofresume12" value="{{statusofresume1}}" >
+
+<td><div class="form-group">
+    <!-- <label for="description"  for="Product">Product Name:</label>-->
+   <select class="form-control element select medium" id="statusofresume123" name="statusofresume123" title="Choose Status of Resume" onChange="changevalues();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in statusofresume123 %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div></td>
+  
+  
+<!-- <!-- <td><input type="text" id ="status" name="status" value="{{status}}" disabled="true">  </td>
+<input type="hidden" id="status" name="status" value="{{status}}" >
+
+
+  
+  <td><div class="form-group">
+    
+   <select class="form-control element select medium" id="status123" name="status123" title="Choose Status " onChange="changevalues();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in status123 %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div></td> --> 
+  
+
+<td><input type="text" name="CTC" value="{{CTC}}" disabled="true">  </td>
+<input type="hidden"  name="CTC" value="{{CTC}}" >
+
+<td><input type="text" name="ECTC" value="{{ECTC}}" disabled="true">  </td>
+<input type="hidden"  name="ECTC" value="{{ECTC}}" >
+
+<td><input type="text" name="Notice_Period" value="{{Notice_Period}}" disabled="true">  </td>
+
+<input type="hidden" id="Notice_Period" name="Notice_Period" value="{{Notice_Period}}" >
+
+<td><input type="text" name='skills' value="{{skills}}" disabled="true">  </td>
+<input type="hidden"  name="skills" value="{{skills}}" >
+
+
+<td><input type="text" name="Yearsofexperience" value="{{Yearsofexperience}}"disabled="true">  </td>
+<input type="hidden"  name="Yearsofexperience" value="{{Yearsofexperience}}" >
+
+<td><input type="text" name="CURRENT LOCATION" value="{{currentlocation}}" disabled="true">  </td>
+<input type="hidden"  name="CURRENT LOCATION" value="{{currentlocation}}" >
+
+
+<td class="col4"><input type="text" name="lOCATION OF INTEREST" value="{{locationofInterest}}" disabled="true">  </td>
+<input type="hidden"  name="lOCATION OF INTEREST" value="{{locationofInterest}}" >
+
+
+<td class="col4"><input type="text" name="Email" value="{{Email}}" disabled="true">  </td>
+<input type="hidden"  name="Email" value="{{Email}}" >
+
+<td class="col4"><input id="datepicker" name="Date_of_birth" value="{{Date_of_birth}}" disabled="true">  </td>
+<input type="hidden"  name="Date_of_birth" value="{{Date_of_birth}}" >
+
+<td class="col4"><input type="text" name="Source" value="{{Submit_SOurce}}" disabled="true">  </td>
+<input type="hidden"  name="Source" value="{{Submit_SOurce}}" >
+
+<td class="col4"><input type="text" name="dateOfSub" value="{{DateofSubmission}}" disabled="true">  </td>
+<input type="hidden"  name="dateOfSub" value="{{DateofSubmission}}" >
+
+
+<td class="col4"><input type="text" name="Note" value="{{Note}}" disabled="true">  </td>
+<input type="hidden"  name="Note" value="{{Note}}" >
+
+<td><input type="file" name="myResume" value="{{myResume}}" disabled="true"></td>
+<input type="hidden"  name="myResume" value="{{myResume}}" >
+
+<td><input type="text"  name="history" value="{{history}}" disabled="true"></td>
+<input type="hidden"  name="history" value="{{history}}" >
+
+
+<td class="col4" ><input type="text" placeholder=" Optional" name="PANCARD NO" value="{{PANCARD}}" disabled="true">  </td>
+<input type="hidden"  name="PANCARD NO" value="{{PANCARD}}" >
+
+<!-- for accessing old status -->
+<td><input id="oldstatusofresume" type="hidden"  name="oldstatusofresume" value={{statusofresume1}}></td>
+<td><input id="oldstatus" type="hidden"  name="oldstatus" value={{status}}></td>
+
+
+</tr>
+<tr>
+<td>
+<input type="submit" value = "submit" class="btn btn-default loginprim" />
+</td>
+</form>
+</tr>
+<tr>
+</tr>
+
+</tr>
+{% for result in listSearchResult %}
+<tr>
+<form id="listOfSearch{{result.5}}" method="post" action="/editMyTask/">
+<tr>
+<td>{{result.2}}</td>
+<td>{{result.3}}</td>
+<td>{{result.4}}</td>
+<td class="tableDivisionTask">	
+	<a href="#" onclick="document.forms['listOfSearch{{result.5}}'].submit();">{{result.5}}<input name = "uniqID" value = "{{result.5}}" id="IdField"  type="hidden" ></a></td>
+
+<td>{{result.1}}</td>
+<!--<td>{{result.0}}</td>-->
+<!--<td> </td>-->
+<td> </td>
+
+<td>{{result.9}}</td>
+<td>{{result.10}}</td>
+<td>{{result.11}}</td>
+<td>{{result.8}}</td>
+<td>{{result.15}}</td>
+<td>{{result.12}}</td>
+
+<td class="col4">{{result.13}}</td>
+
+
+<!--	<td class="Index">{{result.3}}</td>-->
+	
+<!-- <td>{{result.3}}</td> -->
+<td class="col4">{{result.6}}</td>
+<td class="col4">{{result.7}}</td>
+<td class="col4">{{result.16}}</td>
+<td class="col4">{{result.18}}</td>
+
+
+<td class="col4">{{result.17}}</td>
+
+<td width="40%" align="center"><a href="/download/{{result.19}}" style="text-decoration:None">Download Resume</a></td>
+
+<td>{{result.20}}</td>
+
+<td class="col4"><!--<a class="hide"
+href="javascript:;" onclick="hideCol('col4');">hide/show</a>-->{{result.14}}</td>
+
+<!-- to take old values of status of resumes -->
+
+
+<!-- <td>{{result.1}}</td>
+<td>{{result.0}}</td> -->
+
+</tr>
+</form> 
+	{% endfor %}  
+</table>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+
+
+<!--
+<table style="border-style:solid;border-color:CadetBlue;border-width:1pt;" border = 1px>
+<tr>
+<th>Requirement ID</th>
+<th>Client</th>
+<th>Description</th>
+<th>BD POC</th>
+
+<th>Existing Status of requirement</th>
+
+<th>New Status</th>
+<th>Minimum Exp</th>
+<th>Primary Skills</th>
+<th>Date of Opening</th>
+<th>No Of Positions</th>
+<th>Open positions</th>
+<th>Location</th>
+<th>Note</th>
+
+
+<form enctype="multipart/form-data"  id="login" method="post" action="/saveEditRequirement/" >
+<tr>
+
+<td>{{ReqId}}<input name = "RequirementID" value = "{{ReqId}}" id="IdField"  type="hidden" ></td>
+<td><input type="text" name="client" value="{{client}}">  </td>
+<td><input type="text" name="Description" value="{{Description}}">  </td>
+<td><input type="text" name="BDPOC" value="{{BDPOC}}">  </td>
+
+<td><input type="text" id="Status" name="Status" value="{{Status}}"></td>
+
+
+<td> <div class="form-group">
+   
+   <select class="form-control element select medium" id="status2" name="status2" title="Choose Status" onChange="statuschange();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in status2 %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}
+</select>
+  </div> <!--<input type="text" name="Status" value="{{Status}}">-->  <!--</td>-->
+  
+  <!--
+<td><input type="text" name="MinimumExp" value="{{Minimumexp}}">  </td>
+<td><input type="text" name='PrimarySkills' value="{{Primary_Skill}}">  </td>
+<td><input type="text" name="DateofOpening" value="{{Opendate}}">  </td>
+
+<td><input type="text" name="NoOfPositions" value="{{noOfPosition}}">  </td>
+<td><input type="text" name="Openpositions" value="{{openPosition}}">  </td>
+
+<td><input type="text" name="location" value="{{location}}">  </td>
+<td><input type="text" name="note" value="{{note}}">  </td>
+
+<!-- for accessing old status -->
+<!--<td><input id="oldstatus" type="hidden"  name="oldstatus" value={{Status}}></td>
+</tr>
+<tr>
+
+
+<td>
+<input type="submit" value = "submit" class="btn btn-default loginprim" />
+</td>
+</form>
+</tr>
+</tr>
+
+
+
+{% for result in listSearchResult1 %}
+<tr>
+ 
+<form id="listOfSearch{{result.1}}" method="post" action="/editMyRequirement/">
+<tr>
+<td class="tableDivisionTask">	
+<a href="#" onclick="document.forms['listOfSearch{{result.1}}'].submit();">{{result.1}}<input name = "uniqID" value = "{{result.1}}" id="IdField"  type="hidden" ></a></td>
+<td>{{result.2}}</td>
+<td>{{result.10}}</td>
+<td>{{result.8}}</td>
+<td>{{result.9}}</td>
+<td></td>
+<td>{{result.6}}</td>
+<td>{{result.3}}</td>
+<td>{{result.0}}</td>
+<td>{{result.4}}</td>
+<td>{{result.5}}</td>
+
+<td>{{result.7}}</td>
+<td>{{result.11}}</td>
+
+<!-- to take old values of status of resumes -->
+
+<!--<td>{{result.9}}</td>-->
+<!--</tr>
+	  
+
+</form>
+{% endfor %}
+</table>-->
+
+
+<script>
+
+function disableOptions()
+
+{
+
+//var idvalue=document.getElementById("ReqId").value 
+//alert(idvalue)
+var e = document.getElementById("ReqId");
+var input_string = e.options[e.selectedIndex].text;
+   //alert{input_string}
+document.getElementById("ReqId").value =input_string;
+
+}
+</script>
+
+<script>
+
+function date_change()
+
+{
+ //var report=document.getElementById("status").value ;
+
+ 
+ 
+   var date=document.getElementById("datepicker").value ;
+   
+   var date1=document.getElementById("datepicker1").value ;
+   
+   // alert(date1);
+   if (date1 !=" ")
+   {
+  // if (date!='' and date1!='')
+   //{
+   
+        document.getElementById("search").disabled=false;
+		}
+  //}
+   
+   // alert('hi');
+    //document.getElementIdBy('status').disabled="false";
+	// document.getElementById("datepicker1").disabled=true;
+	   
+	 
+}
+</script>
+
+
+<script>
+function statuschange()
+{
+   var e = document.getElementById("status2");
+   var input_string = e.options[e.selectedIndex].text;
+   //alert{input_string}
+   document.getElementById("Status").value =input_string;
+}
+</script>
+
+
+
+<script>
+function changevalues()
+{ 
+
+<!--   var input_string = $("#statusofresume123").val();
+ --> <!-- var status2=document.getElementById("statusofresume123").value ; -->
+ 
+   var e = document.getElementById("statusofresume123");
+   var input_string = e.options[e.selectedIndex].text;
+   //alert{input_string}
+   document.getElementById("statusofresume1").value =input_string;
+   //alert(input_string)
+   
+  <!-- document.getElementById("statusofresume").value =input_string; -->
+  
+  <!-- var input_string1 = $("#status123").val(); -->
+ <!-- var status2=document.getElementById("statusofresume123").value ; -->
+ 
+   var e = document.getElementById("status123");
+   var input_string1 = e.options[e.selectedIndex].text;
+   document.getElementById("status").value =input_string1;
+ 
+ <!-- statusofresume.val(status2); -->
+ <!-- status.val(status1); --> -->
+  
+
+}
+</script>
+
+
+<!-- <script>
+function hideCol(columnClass){
+$('table .'+columnClass).each(function(index) {
+$(this).hide();
+});
+
+$('ul#hiddenCols').append('<li id="'+columnClass
++'"><a href="javascript:;" onclick="showCol(\''
++columnClass+'\');">Show Hidden columns'+'</a></li>');
+}
+</script>
+
+
+<script>
+
+function showCol(columnClass){
+$('table .'+columnClass).each(function(index) {
+$(this).show();
+});
+
+$('li#'+columnClass).remove();
+}
+</script> -->
+
+
+</body>
+</html>

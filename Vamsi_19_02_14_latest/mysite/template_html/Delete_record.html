@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>First Page</title>
+</head>
+<body>
+<a href='/resunsub/' style="BACKGROUND-COLOR: #ffff80;">   Resume Submit    </a>
+<a href='/requiresub/' style="BACKGROUND-COLOR: #ffff80;">    Requirment Submit  </a>
+<a href='/query/' >     Search    </a>
+<form enctype="multipart/form-data"  id="login" method="post" action="/searchResult/" >
+<table  style="border-color:#8000FF;border-width:1px;">
+<tr>
+<td>Name</td>
+<td><input type="text" name="name" value="{{name}}">  </td>
+</tr>
+<tr>
+<td>Mobile Number</td>
+<td><input type="text" name="Mobile_Number" value="{{Mobile_Number}}">  </td>
+</tr>
+<td>Requirement Id</td>
+<td><input type="text" name="Skills" value="{{skills}}">  </td>
+<tr>
+<td></td>
+<td>
+<input type="submit" value = "submit" class="btn btn-default loginprim" >
+</td>
+<td colspan="5" ><font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT';">{{msgRed}}</i>
+</font>
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT'; COLOR: #0000a0;">{{msgBlue}}</i>
+</font>
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; COLOR: #80ff00;">{{msgGreen}}</i>
+</font>
+</td>
+</tr>
+</form>
+</table>
+<table style="border-style:solid;border-color:CadetBlue;border-width:1pt;" border = 1px>
+<tr>
+<th>Name</th>
+<th>Mobile Number</th>
+<th>Email</th>
+<th>Date of birth</th>
+<th>skills</th>
+<th>CTC</th>
+<th>ECTC</th>
+<th>Notice Period</th>
+<th>Resume</th>
+</tr>
+{% for result in listSearchResult %}
+<tr>
+<td>{{result.0}}</td>
+<td>{{result.1}}</td>
+<td>{{result.2}}</td>
+<td>{{result.3}}</td>
+<td>{{result.4}}</td>
+<td>{{result.5}}</td>
+<td>{{result.6}}</td>
+<td>{{result.7}}</td>
+<td width="40%" align="center"><a href="/download/{{result.8}}" style="text-decoration:None">Delete</a></td>
+</tr>
+	{% endfor %}  
+</table>
+
+</body>
+</html>

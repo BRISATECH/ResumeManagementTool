@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<!-- Brisa Technologies CopyRight 2013  -->
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+	    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+    <title> Resume  Search Tool </title>
+    <meta name="description" content="Brisa Technologies">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  <link rel="icon" type="image/ico" href="{{MEDIA_URL}}/media/images/favicon.ico">
+
+	  <!-- Bootstrap core CSS -->
+    <link href="{{MEDIA_URL}}/media/css/bootstrap.css" rel="stylesheet">
+	    <link href="{{MEDIA_URL}}/media/css/testCat.css" rel="stylesheet">
+	
+	  <style>
+
+
+	  </style>
+	  </head>
+
+{{msg1}}
+<!-- saved from url=(0048)http://localhost:8000/Login/first_form.html/ -->
+<!--<script>
+history.pushState({ page: 1 }, "title 1", "#welcome");
+window.onhashchange = function (event) {
+window.location.hash = "welcome";
+
+};
+</script>
+	  </head>
+<body>
+
+<SCRIPT>
+function validateForm()
+{
+var x=document.forms["myForm"]["Username"].value;
+if (x==null || x=="")
+  {
+  alert("Username must be filled out");
+
+  return false;
+  }
+var y=document.forms["myForm"]["Password"].value;
+if (y==null || y=="")
+  {
+  alert("Password must be filled out");
+  return false;
+  }
+}
+</SCRIPT>
+<body class="loginpage">
+
+<SCRIPT>
+function validateForm()
+{
+var x=document.forms["myForm"]["Username"].value;
+if (x==null || x=="")
+  {
+  alert("Username must be filled out");
+  return false;
+  }
+var y=document.forms["myForm"]["Password"].value;
+if (y==null || y=="")
+  {
+  alert("Password must be filled out");
+  return false;
+}
+</SCRIPT><BODY>
+<FORM name="myForm" id="Resumesearch" method="POST" action="/Login_View/" onsubmit="return validateForm()">{%csrf_token%}
+<BR>
+
+<div class="errormsg" style="padding-left:40px; font-weight:bold; color:red; background:rgba(255,255,255,0.8); margin-top:-10px; margin-bottom:10px;">{{wrong_user}} {{wrong_password}} {{Inactive}}{{Login}}</div>
+<div class="input-group">
+
+
+
+
+		<!-- <input type="email" class="form-control" name="Username" title ="Enter User Name with valid Email address"placeholder="Username">-->
+ <!-- Username:
+	<input type="email" class="form-control" name="Username" title ="Enter User Name with valid Email address"placeholder="Username">
+      </div>
+	  <div class="input-group"> Password:
+<input type="password" class="form-control" name="Password" title ="Enter Password"placeholder="Password">
+
+
+
+      </div>
+	 <!-- <a href="/change_password/" value = "Sign-up" class="btn btn-default loginprim">Change password</a>--></td>
+ <!--<div class="input-group">
+ <INPUT type="submit" value="Login" title ="Login"class="btn btn-default loginprim">
+ <!--<a href="/sign_up/">
+ 		<input id="button" class="btn btn-primary" type="submit" disabled ="true"name="submit"  value="Sign Up" form action="sign_up"  ></a>-->
+
+      <!--</div>
+</div>
+ </FORM>
+
+
+</BODY></HTML>-->
+<!--------------------------------------------------------------------------Lavita's code starts here-------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+<body style="background-color:#9ACD32;">
+
+<b><h1 style="text-align:center"><font size="25">Sign In To Continue The tool</font></h1></b>
+
+
+<SCRIPT>
+function validateForm()
+
+{document.forms["myForm"]["submit"].disabled="false";
+var x=document.forms["myForm"]["Username"].value;
+if (x==null || x=="")
+  {document.forms["myForm"]["submit"].enabled="true";
+  alert("Username must be filled out");
+  //document.forms["myForm"]["submit"].disabled="false";
+  return false;
+  }
+var y=document.forms["myForm"]["Password"].value;
+if (y==null || y=="")
+  {
+  alert("Password must be filled out");
+  return false;
+  }
+}
+</SCRIPT>
+<script>
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script>
+
+ 
+<form id="login" method="post" name="myForm" action="/Login_View/" method="POST" onsubmit=" return validateForm()"> <br>
+<div class="errormsg" style="padding-left:40px; font-weight:bold; color:red; background:rgba(255,255,255,0.8); margin-top:-10px; margin-bottom:10px;">{{wrong_password}} </div>
+<div class="errormsg" style="padding-left:40px; font-weight:bold; color:red; background:rgba(255,255,255,0.8); margin-top:-10px; margin-bottom:10px;">{{fl}} </div>
+<div class="errormsg" style="padding-left:40px; font-weight:bold; color:red; background:rgba(255,255,255,0.8); margin-top:-10px; margin-bottom:10px;">{{wrong_user}} </div>
+<center>			
+<tr>
+<td><font size="4">User name:</font></td>
+<td><input name = "Username"class = "form-control" placeholder="me@example.com" id="Username" size="20" type="email"></td><br><br>
+</tr>
+<tr>
+<td><font size="4">Password:</font></td>
+<td><input type="password" class = "form-control" placeholder="password" size="20" name="Password"></td><br>
+</tr>
+<tr><br>
+<td><input type ="submit" value = "Login"   style="width: 230px; height: 30px" class="btn btn-default loginprim"></td><br>
+<a href = "/signup/"><font size="5" color="blue">     Sign up        </font></a>&nbsp;  
+<a href = "/passwordkey/"><font size="5" color="blue">     change password       </font></a><br>
+ </tr></center>
+</body>
+  
+</form>
+</body>
+
+</html> 

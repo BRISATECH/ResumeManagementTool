@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<!-- SECOND PAGE Requirement page-->
+
+{% load hotkeys %}
+<html>
+<head>
+{% setup_hotkeys %}
+<meta charset="ISO-8859-1">
+<meta charset="ISO-8859-1">
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+  
+  <script>
+  $(document).ready(function() {
+    $("#datepicker").datepicker();
+  });
+  </script>
+<title>First Page</title>
+</head>
+<body>
+<a href='/resunsub/' >   Resume Submit    </a> &nbsp; &nbsp;
+<a href='/requiresub/' style= "COLOR: #eb7501;">    Requirement Submit  </a> &nbsp; &nbsp;
+<a href='/query/' >     Search    </a> &nbsp; &nbsp;
+<a href='/ReportManagementfile/'> Report Management </a> </div>&nbsp;&nbsp;
+<!--<a href='/openstateresume/' > Open State Resumes </a>&nbsp; &nbsp;-->
+<a href='/RequirementManagement/'> Requirement Management </a> &nbsp; &nbsp;
+<a href='/help1/'>      help    </a> &nbsp; &nbsp;
+<a href='/logout/'>            Sign Out    </a><br>
+
+<form id="login" method="post" action="/submtRrequire/" >
+<table  style="border-color:#8000FF;border-width:1px;">
+
+<tr>
+<td>Date of Opening</td>
+<td><input id="datepicker" name="Date_of_OPening" value="{{Date_of_OPening}}">  </td>
+</tr>
+
+<!--<tr>
+<td>Requirement Id</td>
+<td><input type="text" name="ReqId" value="{{ReqId}}">  </td>
+</tr>-->
+
+<tr>
+<td>Client</td>
+<td><input type="text" name="Client" value="{{Client}}">  </td>
+</tr>
+
+<tr>
+<td>Primary Skill</td>
+<td><input type="text" name="Primary_Skill" value="{{Primary_Skill}}">  </td>
+</tr>
+
+<tr>
+<td>Number of Position</td>
+<td><input type="text" name="noOfPosition" value="{{noOfPosition}}">  </td>
+</tr>
+
+<tr>
+<td>Open Position</td>
+<td><input type="text" name="openPosition" value="{{openPosition}}">  </td>
+</tr>
+
+<tr>
+<td>Minimum Experience</td>
+<td><input type="text" name="MinimumExperience" value="{{MinimumExperience}}">  </td>
+</tr>
+
+<tr>
+<td>Location</td>
+<td><input type="text" name="Location" value="{{Location}}">  </td>
+</tr>
+<tr>
+<tr>
+<td>BD POC</td>
+
+<td><select class="form-control element select medium" id="BD_POC" name="BD_POC" title="Choose Source Name" onChange="source_name();">
+    <option selected="selected" value=""  ></option>
+    
+	{% for result in getBDPOC %}
+
+
+<option   value={{result}} >{{result}}</option>
+
+ {% endfor %}
+</select><!--<input type="text" name="BD_POC" value="{{BD_POC}}"> --> </td>
+</tr>
+<tr>
+
+<tr>
+<td>Status</td>
+<td><select  id="status" name="status" title="Choose Status" onChange="disableOptions();"> 
+
+        <option selected ="selected" ></option>
+   
+        {% for result in list %}
+
+
+<option   value={{result}} >{{result}}</option>
+ {% endfor %}  </select> <!--<input type="text" name="Status" value="{{Status}}" placeholder="  Open/Close"> --> </td>
+</tr>
+
+<tr>
+<td>Description</td>
+<td><input type="text" name="Description" value="{{Description}}">  </td>
+</tr>
+
+<tr>
+<td>Note</td>
+<td><input type="text" name="Note" value="{{Note}}">  </td>
+</tr>
+
+</table>
+<input type="submit" value = "submit" class="btn btn-default loginprim" >
+</form>
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-FAMILY: 'Calisto MT'; FONT-SIZE: x-large;">{{msgRed}}</i>
+</font>
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY: 'Calisto MT'; COLOR: #0000a0;">{{msgBlue}}</i>
+</font>
+<font style="FONT-FAMILY: 'Footlight MT Light'; FONT-SIZE: x-large; COLOR: #ff0000;">
+<i style="FONT-SIZE: medium; FONT-FAMILY:  'Calisto MT'; COLOR: #80ff00;">{{msgGreen}}</i>
+</font>
+
+<br>{{msg}}
+</body>
+</html>

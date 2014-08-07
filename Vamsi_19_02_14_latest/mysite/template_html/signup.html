@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!------------------------------------------------------------------LAVITA's code--------------------------------------------------------------------------------------------------->
+<html>
+<head>
+</head>
+<BODY onload="noBack();"
+    onpageshow="if (event.persisted) noBack();" onunload=""></BODY>
+<b><h1 style="text-align:center"><font size="25">Signup</font></h1></b>
+<body style="background-color:#9ACD32;">
+<p><b><font size="5">{{flag}}</font></b></p>
+
+<script>
+function submitForm()
+{
+  var First_Name = document.forms["MyForm"]["firstname"].value;
+  var Last_Name = document.forms["MyForm"]["lastname"].value;
+  var mobilenumber = document.forms["MyForm"]["mobilenumber"].value;
+  var User_Name = document.forms["MyForm"]["Username"].value;
+  var Password = document.forms["MyForm"]["Password"].value;
+  var Confirm_password = document.forms["MyForm"]["confirmpassword"].value;
+
+if(!First_Name=='' && !Last_Name=='' && !mobilenumber=='' &&  !User_Name=='' && !Password=='' && !Confirm_password=='')
+{
+
+					}
+					else
+					{
+					alert("please check if all the fields are filled or not");
+					}					 
+}
+</script>
+ <script>
+window.location.hash="no-back-button";
+window.location.hash="Again-No-back-button";//again because google chrome don't insert first hash into history
+window.onhashchange=function(){window.location.hash="no-back-button";}
+</script>
+
+
+
+<form id="signupdata" name="MyForm" method="POST" method="POST"action="/signupdata/" onsubmit=" return submitForm()"><br>
+<center><tr>
+<td><font size="4">Username:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> </td>
+<td><input name = "Username1"class = "form-control" placeholder="me@example.com" id="Username1"  type="email"></td><br>
+<td><font size="4">First Name:&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</font>  </td>
+<td><input name = "firstname"class = "form-control" placeholder="firstname" id="firstname"  type="text"></td><br>
+<td><font size="4">Last Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </font> </td>
+<td><input name = "lastname"class = "form-control" placeholder="lastname" id="lastname"  type="text"></td><br>
+<td><font size="4">Department/Roll:&nbsp;</font> </td>
+
+<select name="department" id="department" style="width: 140px;">
+  <option value="HR">HR</option>
+  <option value="TA">TA</option>
+  <option value="MANAGEMENT">MANAGEMENT</option>
+  <option value="BD">BDO</option>
+</select><BR>
+<!--<td><font size="4">Tagvalue:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font> </td>
+<select name="Tag_value" id="Tag_value" style="width: 140px;">
+  <option value="0">0</option>
+  <option value="TA">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+</select><BR>-->
+<td><font size="4">Mobile Number:</font></td>
+<td><font size="4"><input name = "mobilenumber"class = "form-control" placeholder="mobilenumber" id="mobilenumber" type="number"></td><br>
+</tr>
+<tr>
+<td><font size="4">Create Password:</font></td>
+</tr>
+<tr>
+<td><input type="password" class = "form-control" placeholder="password" name="pwd"></td><br>
+</tr>
+<td><font size="4">Confirm Password:</font></td>
+<tr>
+<td><input type="password" class = "form-control" placeholder="Confirm Password" name="confirmpassword"></td><br>
+</tr>
+<tr>
+<td><input type ="submit" value = "submit" style="width: 130px; height: 25px" class="btn btn-default loginprim"></td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href = "/logout/"><font size="5" color="blue">     LOGIN </font></a>
+</tr></center>
+
+</form>
+
+ 
+</body>
+</html>

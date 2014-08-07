@@ -1,0 +1,129 @@
+<html>
+
+<head>
+
+<style type="text/css">
+body
+{
+color: black;
+background-color:#9ACD32;
+style=""
+}
+
+.wrapper {
+    text-align: center;
+}
+
+.button {
+    position: absolute
+    padding-top:40px;
+    padding-left:10px;
+    padding-right:10px;
+    margin-top:30px;
+    top: 50%;
+}
+
+.table
+{
+    margin-top:50px;
+}
+
+</style>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<title>My Task</title>
+
+<style type="text/css">
+    .title { color: blue; text-decoration: bold; text-size: 1em; }
+    .author { color: gray; }
+	.hidden{visibility:hidden}
+</style>
+
+<style>
+.left
+{
+float:left;
+width:200px;
+
+}
+</style>
+
+</head>
+
+
+
+<body>
+<div class="left">
+
+<a href='/resunsub/' >   Resume Submit    </a></div>
+
+<div class="left">
+
+<a href='/requiresub/' >    Requirement Submit  </a></br> </div>
+
+
+
+<div class="left">
+
+<a href='/RequirementManagement/'> Requirement Management </a>  </div>
+
+<div class="left">
+
+<a href='/query/'  >     Search </a> </div>
+
+<div class="left">
+<a href='/logout/'>            Sign Out    </a></div></br>
+
+
+<table class="table" align= "center" style="border-style:solid;border-color:CadetBlue;border-width:1pt;" border = 1px>
+<tr>
+<th>Date of Opening</th>
+<th>Requirement ID</th>
+<th>Client</th>
+<th>Primary Skills</th>
+<th>No Of Positions</th>
+<th>Open positions</th>
+<th>Minimum Exp</th>
+<th>Location</th>
+<th>BD POC</th>
+<th>Status</th>
+<th>Description</th>
+<th>Note</th>
+
+
+</tr>  
+{% for result in list %}
+<tr>
+ 
+<form id="listOfSearch{{result.1}}" method="post"  action="/back/">{%csrf_token%}
+<tr>
+<td>{{result.0}}</td>
+
+<td> {{result.1}}</td>
+<td>{{result.2}}</td>
+<td>{{result.3}}</td>
+<td>{{result.4}}</td>
+<td>{{result.5}}</td>
+<td>{{result.6}}</td>
+<td>{{result.7}}</td>
+<td>{{result.8}}</td>
+<td>{{result.9}}</td>
+<td>{{result.10}}</td>
+<td>{{result.11}}</td>
+</tr>
+	  
+
+{% endfor %}
+
+
+</table>
+
+<div class="wrapper">
+<input id="button"  class="button" value = "BACK" type="submit" class="btn btn-primary"  >
+</div>
+
+</form>
+
+</body>
+</html>
